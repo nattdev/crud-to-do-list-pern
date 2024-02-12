@@ -14,7 +14,7 @@ export const getTask = async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM tasks WHERE id = $1", [req.params.id]);
         if (result.rows.length == 0) {
-            return res.status(404).json("Message not found");
+            return res.status(404).json("Task not found");
         }
         res.json(result.rows);
     } catch (error) {
@@ -40,12 +40,27 @@ export const updateTask = async (req, res) => {
     try {
         const result = await pool.query("UPDATE tasks SET title = $1, description = $2 WHERE id = $3", [req.body["title"], req.body["description"], req.params.id]);
 
-        if(result.rowCount == 0) {
-            return res.status(404).json("Message not found");
+        if (result.rowCount == 0) {
+            return res.status(404).json("Task not found");
         }
         res.json(result);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: error.message });
     }
+}
+
+export const deleteTask = async (req, res) => {
+    try {
+        const result = await pool.query("DELETE FROM tasks WHERE id = $1", [req.params.id]);
+        if (result.rowCount == 0) {
+            return res.status(404).json("Task not found");
+        }
+        console.log(result);
+        return res.sendStatus(204);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: error.message });
+    }
+  
 }
