@@ -2,7 +2,7 @@ import { pool } from '../src/db.js';
 
 export const getTasks = async (req, res) => {
     try {
-        const result = await pool.query("SELECT * FROM tasks");
+        const result = await pool.query("SELECT * FROM tasks ORDER BY dateCreated ASC");
         res.json(result.rows);
     } catch (error) {
         console.error(error);
@@ -29,6 +29,20 @@ export const createTask = async (req, res) => {
 
         const result = await pool.query("INSERT INTO tasks (title, description) VALUES ($1, $2)", [title, description]);
 
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: error.message });
+    }
+}
+
+export const updateTask = async (req, res) => {
+    try {
+        const result = await pool.query("UPDATE tasks SET title = $1, description = $2 WHERE id = $3", [req.body["title"], req.body["description"], req.params.id]);
+
+        if(result.rowCount == 0) {
+            return res.status(404).json("Message not found");
+        }
         res.json(result);
     } catch (error) {
         console.error(error);
