@@ -1,3 +1,5 @@
 server/node_modules
 server/db.sql
 server/src/config.js
+
+client/node_modules
