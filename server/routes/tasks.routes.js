@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { pool } from '../src/db.js';
+import { getTasks } from '../controllers/tasks.controllers.js';
 
 const router = Router();
 
-router.get('/tasks', (req, res) => { res.send("Get Tasks")  });
+router.get('/tasks', getTasks);
 
 router.get('/tasks/:id', (req, res) => { res.send("Get Task:id:" + req.params.id) });
 
