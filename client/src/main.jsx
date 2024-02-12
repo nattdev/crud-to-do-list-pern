@@ -4,6 +4,7 @@ import './styles/index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/Root.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import Tasks from './pages/Tasks.jsx';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/tasks",
-        element: <div>OBTENER TASKS</div>,
+        element: <Tasks />,
       },
       {
         path: "/new",
