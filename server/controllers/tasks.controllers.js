@@ -22,3 +22,16 @@ export const getTask = async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 }
+
+export const createTask = async (req, res) => {
+    try {
+        const { title, description } = req.body;
+
+        const result = await pool.query("INSERT INTO tasks (title, description) VALUES ($1, $2)", [title, description]);
+
+        res.json(result);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: error.message });
+    }
+}

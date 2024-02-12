@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getTask, getTasks } from '../controllers/tasks.controllers.js';
+import { createTask, getTask, getTasks } from '../controllers/tasks.controllers.js';
 
 const router = Router();
 
@@ -7,7 +7,7 @@ router.get('/tasks', getTasks);
 
 router.get('/tasks/:id', getTask);
 
-router.post('/tasks/:id', (req, res) => { res.send("Create Task:id:" + req.params.id) });
+router.post('/tasks', createTask);
 
 router.put('/tasks/:id', (req, res) => { res.send("Update Task:id:" + req.params.id) });
 
