@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { getTasks } from '../controllers/tasks.controllers.js';
+import { getTask, getTasks } from '../controllers/tasks.controllers.js';
 
 const router = Router();
 
 router.get('/tasks', getTasks);
 
-router.get('/tasks/:id', (req, res) => { res.send("Get Task:id:" + req.params.id) });
+router.get('/tasks/:id', getTask);
 
 router.post('/tasks/:id', (req, res) => { res.send("Create Task:id:" + req.params.id) });
 
