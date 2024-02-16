@@ -1,27 +1,25 @@
-import { useEffect, useState } from "react";
-import { getTasksRequest } from "../api/tasks.api";
+import { useContext, useEffect, useState } from "react";
+
+import TaskCard from "../components/TaskCard.jsx";
+import { TasksContext, useTasks } from "../components/TaskContext.jsx";
 
 export default function Tasks() {
 
-    const [tasks, setTasks] = useState([]);
+    const { tasks, loadTasks } = useTasks();
 
     useEffect(() => {
         loadTasks();
     }, []);
 
-    const loadTasks = async () => {
-        const response = await getTasksRequest();
-        setTasks(response.data);
-        return response.data;
-    }
+    useEffect(() => {
+        console.log("Se actualizo task");
+    }, [tasks]);
+
 
     const renderTasks = () => {
         if (tasks.length !== 0) {
             return tasks.map((task) => (
-                <div key={task.id}>
-                    <h3>{task.title}</h3>
-                    <p>{task.description}</p>
-                </div>
+                <TaskCard key={task.id} task={task} />
             ));
         } else {
             return <p>No Tasks</p>
