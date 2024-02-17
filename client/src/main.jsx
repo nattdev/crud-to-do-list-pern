@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './styles/index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './styles/index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/Root.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
-import Tasks from './pages/Tasks.jsx';
+import Tasks from './components/Tasks.jsx';
 import { TasksContextProvider } from './components/TaskContext.jsx';
 import TaskForm from './components/TaskForm.jsx';
 

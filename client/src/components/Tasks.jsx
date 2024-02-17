@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-
-import TaskCard from "../components/TaskCard.jsx";
-import { TasksContext, useTasks } from "../components/TaskContext.jsx";
+import TaskCard from "./TaskCard.jsx";
+import { TasksContext, useTasks } from "./TaskContext.jsx";
 
 export default function Tasks() {
 
