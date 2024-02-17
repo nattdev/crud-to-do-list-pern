@@ -15,7 +15,6 @@ export default function Tasks() {
         console.log("Se actualizo task");
     }, [tasks]);
 
-
     const renderTasks = () => {
         if (tasks.length !== 0) {
             return tasks.map((task) => (

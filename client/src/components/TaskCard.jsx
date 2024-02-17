@@ -1,13 +1,14 @@
-import { useEffect } from "react";
-import { deleteTasksRequest } from "../api/tasks.api";
+import { useNavigate } from "react-router-dom";
 import { useTasks } from "./TaskContext";
 
 export default function TaskCard({ task }) {
 
+    const navigate = useNavigate();
+
     const { tasks, deleteTask } = useTasks();
 
     const handleClick = () => {
-        console.log("edit");
+        navigate(`/edit/${task.id}`);
     }
 
     return (

@@ -6,6 +6,7 @@ import Root from './routes/Root.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import Tasks from './pages/Tasks.jsx';
 import { TasksContextProvider } from './components/TaskContext.jsx';
+import TaskForm from './components/TaskForm.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/new",
-        element: <>CREATE TASK</>,
+        element: <TaskForm />,
+      },
+      {
+        path: "/edit/:id",
+        element: <TaskForm />
       }
     ]
   }
