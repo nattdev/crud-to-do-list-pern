@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import TaskCard from "./TaskCard.jsx";
 import { TasksContext, useTasks } from "./TaskContext.jsx";
 
+import { Box, Typography } from "@mui/material";
+
 export default function Tasks() {
 
     const { tasks, loadTasks } = useTasks();
@@ -20,14 +22,14 @@ export default function Tasks() {
                 <TaskCard key={task.id} task={task} />
             ));
         } else {
-            return <p>No Tasks</p>
+            return <Typography m={3}>No Tasks</Typography>
         }
     }
 
     return (
-        <div className="tasks-container">
-            <h2>TASKS</h2>
+        <Box mt={20}>
+            <Typography variant="h2" m={2}>TASKS</Typography>
             {renderTasks()}
-        </div>
+        </Box>
     );
 }

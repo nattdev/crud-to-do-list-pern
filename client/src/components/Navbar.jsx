@@ -1,19 +1,23 @@
+import { AppBar, Box, Link, Toolbar, MenuItem, Typography } from '@mui/material';
+
 function Navbar() {
     return (
-        <div className="navbar">
-            <h1>PERN-CRUD-To-Do</h1>
-            <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/tasks">Show Tasks</a>
-                </li>
-                <li>
-                    <a href="/new">New Task</a>
-                </li>
-            </ul>
-        </div>
+        <Box>
+            <AppBar>
+                <Typography sx={{ textAlign: 'center', mt: 2}} >PERN-CRUD-To-Do</Typography>
+                <Toolbar sx={{ flexWrap: 'wrap', justifyContent: "center" }}>
+                    <MenuItem>
+                        <Link color={'#fff'} href="/">Home</Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link color={'#fff'} href="/tasks">Show Tasks</Link>
+                    </MenuItem>
+                    <MenuItem>
+                        <Link color={'#fff'} href="/new">New Task</Link>
+                    </MenuItem>
+                </Toolbar>
+            </AppBar>
+        </Box>
     )
 }
 
