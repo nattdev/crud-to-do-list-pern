@@ -1,5 +1,6 @@
 server/node_modules
 server/db.sql
 server/src/config.js
+server/npm-debug.log
 
 client/node_modules

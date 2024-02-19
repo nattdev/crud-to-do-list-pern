@@ -1,9 +1,16 @@
-import express from 'express';
+/*import express from 'express';
 import { PORT } from './config.js'
 import indexRoutes from '../routes/index.routes.js';
 import tasksRoutes from '../routes/tasks.routes.js';
 import morgan from 'morgan';
-import cors from 'cors';
+import cors from 'cors';*/
+
+const express = require('express');
+const { PORT } = require('./config.js');
+const indexRoutes = require('../routes/index.routes.js');
+const tasksRoutes = require('../routes/tasks.routes.js');
+const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 

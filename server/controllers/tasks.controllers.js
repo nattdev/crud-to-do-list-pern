@@ -1,6 +1,8 @@
-import { pool } from '../src/db.js';
+//import { pool } from '../src/db.js';
 
-export const getTasks = async (req, res) => {
+const { pool } = require('../src/db.js');
+
+const getTasks = async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM tasks ORDER BY dateCreated ASC");
         res.json(result.rows);
@@ -10,7 +12,7 @@ export const getTasks = async (req, res) => {
     }
 };
 
-export const getTask = async (req, res) => {
+const getTask = async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM tasks WHERE id = $1", [req.params.id]);
         if (result.rows.length == 0) {
@@ -23,7 +25,7 @@ export const getTask = async (req, res) => {
     }
 }
 
-export const createTask = async (req, res) => {
+const createTask = async (req, res) => {
     try {
         const { title, description } = req.body;
 
@@ -36,7 +38,7 @@ export const createTask = async (req, res) => {
     }
 }
 
-export const updateTask = async (req, res) => {
+const updateTask = async (req, res) => {
     try {
         const result = await pool.query("UPDATE tasks SET title = $1, description = $2 WHERE id = $3", [req.body["title"], req.body["description"], req.params.id]);
 
@@ -50,7 +52,7 @@ export const updateTask = async (req, res) => {
     }
 }
 
-export const deleteTask = async (req, res) => {
+const deleteTask = async (req, res) => {
     try {
         const result = await pool.query("DELETE FROM tasks WHERE id = $1", [req.params.id]);
         if (result.rowCount == 0) {
@@ -64,3 +66,11 @@ export const deleteTask = async (req, res) => {
     }
   
 }
+
+module.exports = {
+	getTasks,
+	getTask,
+	createTask,
+	updateTask,
+	deleteTask
+};

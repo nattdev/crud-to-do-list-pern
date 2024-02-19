@@ -1,5 +1,8 @@
-import { Router } from "express";
-import { pool } from "../src/db.js";
+/*import { Router } from "express";
+import { pool } from "../src/db.js";*/
+
+const { Router } = require('express');
+const { pool } = require('../src/db.js');
 
 const router = Router();
 
@@ -13,4 +16,5 @@ router.get('/ping', async (req, res) => {
     }
 });
 
-export default router;
+// export default router;
+module.exports = router;
