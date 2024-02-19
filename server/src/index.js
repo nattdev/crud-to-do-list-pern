@@ -6,11 +6,13 @@ import morgan from 'morgan';
 import cors from 'cors';*/
 
 const express = require('express');
-const { PORT } = require('./config.js');
+//const { PORT } = require('./config.js');
 const indexRoutes = require('../routes/index.routes.js');
 const tasksRoutes = require('../routes/tasks.routes.js');
 const morgan = require('morgan');
 const cors = require('cors');
+
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
