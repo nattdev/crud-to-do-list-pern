@@ -12,7 +12,7 @@ export default function TaskCard({ task }) {
     }
 
     return (
-        <Box border={1} m={2} p={2}>
+        <Box border={1} m={2} p={2} sx={{maxWidth : 250}}>
             <Typography variant="h3">{task.title}</Typography>
             <Typography variant="body1" py={2}>{task.description}</Typography>
             <Stack direction="row" spacing={1}>
