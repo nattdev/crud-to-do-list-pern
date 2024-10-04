@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { useTasks } from "./TaskContext";
 
 import { Box, Typography, Button, Stack } from "@mui/material";
+import ModalDelete from "./ModalDelete";
 
 export default function TaskCard({ task }) {
 
     const navigate = useNavigate();
-
-    const { tasks, deleteTask } = useTasks();
 
     const handleClick = () => {
         navigate(`/edit/${task.id}`);
@@ -19,7 +17,7 @@ export default function TaskCard({ task }) {
             <Typography variant="body1" py={2}>{task.description}</Typography>
             <Stack direction="row" spacing={1}>
                 <Button variant="contained" onClick={handleClick}>EDIT</Button>
-                <Button color={"warning"} variant="contained" onClick={() => deleteTask(task.id)}>DELETE</Button>
+                <ModalDelete task={task}/>
             </Stack>
         </Box>
     )
