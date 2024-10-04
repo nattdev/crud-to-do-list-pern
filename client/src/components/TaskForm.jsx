@@ -17,7 +17,6 @@ export default function TaskForm() {
 
     useEffect(() => {
         if (params.id) {
-            console.log("paramsid")
             async function loadTask() {
                 const response = await getTaskRequest(params.id);
                 titleRef.current.value = response.data[0].title;
@@ -44,7 +43,6 @@ export default function TaskForm() {
             }
 
             if (params.id) {
-                console.log("Params: ", params.id);
                 const response = await updateTaskRequest(params.id, values);
                 response.status == 200 && setIsSubmit(true);
             } else {

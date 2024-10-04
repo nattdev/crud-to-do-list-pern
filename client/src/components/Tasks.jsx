@@ -13,7 +13,6 @@ export default function Tasks() {
     }, []);
 
     useEffect(() => {
-        console.log("Se actualizo task");
     }, [tasks]);
 
     const renderTasks = () => {
