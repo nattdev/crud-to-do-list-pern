@@ -28,7 +28,9 @@ export default function Tasks() {
     return (
         <Box mt={20}>
             <Typography variant="h2" m={2}>TASKS</Typography>
+            <Box sx={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
             {renderTasks()}
+            </Box>
         </Box>
     );
 }
