@@ -1,6 +1,3 @@
-/*import { Router } from "express";
-import { pool } from "../src/db.js";*/
-
 const { Router } = require('express');
 const { pool } = require('../src/db.js');
 

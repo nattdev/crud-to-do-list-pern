@@ -1,5 +1,3 @@
-//import { pool } from '../src/db.js';
-
 const { pool } = require('../src/db.js');
 
 const getTasks = async (req, res) => {

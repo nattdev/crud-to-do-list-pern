@@ -1,9 +1,6 @@
-/*import pg from 'pg';
-import {config} from './config.js';*/
 require('dotenv').config()
-const pg = require('pg');
-// const { config } = require('./config.js');
 
+const pg = require('pg');
 let dbConfig;
 
 if (process.env.NODE_ENV === 'development') {
@@ -23,5 +20,3 @@ if (process.env.NODE_ENV === 'development') {
 const pool = new pg.Pool(dbConfig);
 
 module.exports = { pool };
-
-// pool.on('connect', () => console.log('DB connected'));
