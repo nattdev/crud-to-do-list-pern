@@ -69,7 +69,7 @@ export default function TaskForm() {
     }
 
     return (
-        <Box mt={20}>
+        <Box mt={5}>
             <Container component="main" maxWidth="xs">
                 <form onSubmit={handleSubmitForm}>
                     <fieldset>
