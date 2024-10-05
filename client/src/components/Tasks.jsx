@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect} from "react";
 import TaskCard from "./TaskCard.jsx";
-import { TasksContext, useTasks } from "./TaskContext.jsx";
+import { useTasks } from "./TaskContext.jsx";
 
 import { Box, Typography } from "@mui/material";
 

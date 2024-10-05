@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createTaskRequest, getTaskRequest, updateTaskRequest } from "../api/tasks.api";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import { Box, TextField, Container, Typography, Button, Alert } from '@mui/material'
 
@@ -8,20 +8,19 @@ export default function TaskForm() {
 
     const titleRef = useRef();
     const descriptionRef = useRef();
-    const submitRef = useRef();
     const params = useParams();
-    const navigate = useNavigate();
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmit, setIsSubmit] = useState(false);
 
+    const  loadTask = async () => {
+        const response = await getTaskRequest(params.id);
+        titleRef.current.value = response.data[0].title;
+        descriptionRef.current.value = response.data[0].description;
+    }
+
     useEffect(() => {
         if (params.id) {
-            async function loadTask() {
-                const response = await getTaskRequest(params.id);
-                titleRef.current.value = response.data[0].title;
-                descriptionRef.current.value = response.data[0].description;
-            }
             loadTask();
         }
     }, []);
@@ -53,12 +52,10 @@ export default function TaskForm() {
         } catch (error) {
             console.log(error);
         } finally {
-            if (params.id) {
-                
-            } else {
+            if (!params.id) {
                 titleRef.current.value = "";
                 descriptionRef.current.value = "";
-            }
+            } 
             setIsSubmitting(false);
         }
     }

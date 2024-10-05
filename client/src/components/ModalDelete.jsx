@@ -23,7 +23,7 @@ function ModalDelete({ task }) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const { tasks, deleteTask } = useTasks();
+    const { deleteTask } = useTasks();
 
     return (
         <div>
