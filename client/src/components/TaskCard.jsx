@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
-import { Box, Typography, Button, Stack } from "@mui/material";
+import { Box, Typography, Button, Stack, Checkbox } from "@mui/material";
 import ModalDelete from "./ModalDelete";
+import { useState } from "react";
 
 export default function TaskCard({ task }) {
 
-    const navigate = useNavigate();
+    const [taskComplete, setTaskComplete] = useState(false);
 
+    const navigate = useNavigate();
+    
     const handleClick = () => {
         navigate(`/edit/${task.id}`);
     }
@@ -22,15 +25,19 @@ export default function TaskCard({ task }) {
       second: "2-digit",
     };
     const formattedDate = date.toLocaleString("en-EN", options);
+    const label = { inputProps: { 'aria-label': 'Task Complete' } };
 
     return (
         <Box border={1} m={2} p={2} sx={{maxWidth : {xs: 200, lg: 250}}}>
+            <Checkbox checked={taskComplete} onChange={() => setTaskComplete(!taskComplete)} {...label} color="success" />
+            <Box sx={{textDecoration: taskComplete ? "line-through" : "none"}}>
             <Box sx={{display: "flex", flexDirection: "column", gap: "1rem"}}>
             <Typography variant="body1" sx={{textWrap: "nowrap"}}>Task #{task.id}</Typography>
             <Typography  mb={1} sx={{textAlign: "left"}} variant="caption">{formattedDate}</Typography>
             </Box>
             <Typography sx={{fontSize: {xs: "1.5rem"}}} variant="h3">{task.title}</Typography>
             <Typography sx={{fontSize: {xs: "1rem"}}} variant="body1" py={2}>{task.description}</Typography>
+            </Box>
             <Stack direction="row" spacing={1}>
                 <Button variant="contained" onClick={handleClick}>EDIT</Button>
                 <ModalDelete task={task}/>
