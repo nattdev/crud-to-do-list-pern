@@ -16,6 +16,7 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    zIndex: 900,
 };
 
 function ModalDelete({ task }) {
@@ -36,10 +37,10 @@ function ModalDelete({ task }) {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        ¿Estás seguro de que deseas eliminar esta tarea?
+                    Are you sure you want to delete this task? This action cannot be undone.
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Esta acción no se puede deshacer.
+                    This action cannot be undone.
                     </Typography>
                     <Button sx={{mt : 2}} color={"warning"} variant="contained" onClick={() => deleteTask(task.id)}>DELETE</Button>
                 </Box>
